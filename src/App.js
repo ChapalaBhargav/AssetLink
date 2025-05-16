@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from "react";
 import { auth, onAuthStateChanged, doc, getDoc, db, signOut } from "./firebase";
 import Login from "./Login";
@@ -14,7 +13,6 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         setUser(firebaseUser);
-        // Fetch isAdmin flag from user doc
         const userRef = doc(db, "users", firebaseUser.uid);
         const userSnap = await getDoc(userRef);
         if (userSnap.exists()) {

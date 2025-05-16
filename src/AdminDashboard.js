@@ -75,10 +75,9 @@ export default function AdminDashboard({ user }) {
       .sort((a, b) => {
         const t1 = a.timestamp?.toMillis?.() || 0;
         const t2 = b.timestamp?.toMillis?.() || 0;
-        return t2 - t1; // Newest first
+        return t2 - t1;
       });
 
-    // Fetch asset user info
     const assetIds = [...new Set(allMessages.map((m) => m.assetId))];
     const assetUserMap = {};
 
@@ -93,7 +92,6 @@ export default function AdminDashboard({ user }) {
       }
     }
 
-    // Append user info to messages
     const enrichedMessages = allMessages.map((msg) => ({
       ...msg,
       registeredUsers: assetUserMap[msg.assetId] || [],
